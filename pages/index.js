@@ -1,96 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MaxSync - Login</title>
-  <style>
-    /* Full screen setup */
-    body, html {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      width: 100%;
-      font-family: 'Segoe UI', Arial, sans-serif;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      overflow: hidden;
-      color: white;
-      background: linear-gradient(-45deg, #1a1a1a, #3b3b98, #0f2027, #2c5364);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-    }
+export default function Home() {
+  return (
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-purple-900 via-black to-gray-900">
+      <div className="bg-black bg-opacity-70 p-10 rounded-2xl shadow-2xl w-full max-w-md">
+        {/* Title */}
+        <h1 className="text-4xl font-bold text-center text-purple-400 mb-8">
+          MaxSync
+        </h1>
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        {/* Input Fields */}
+        <div className="mb-4">
+          <label className="block text-gray-300 mb-2">Email</label>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+        </div>
 
-    /* Branding */
-    .container h1 {
-      font-size: 4em;
-      margin: 0;
-      font-weight: bold;
-      color: #ffffff;
-    }
+        <div className="mb-6">
+          <label className="block text-gray-300 mb-2">Password</label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500"
+          />
+        </div>
 
-    .container p {
-      margin: 15px 0 40px;
-      font-size: 1.2em;
-      color: #f0f0f0;
-      opacity: 0.9;
-    }
+        {/* Login Button */}
+        <button className="w-full py-3 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-lg transition duration-300">
+          Login
+        </button>
 
-    /* Trakt button */
-    .login-btn {
-      background: linear-gradient(90deg, #ff4b2b, #ff416c);
-      color: white;
-      font-size: 1.2em;
-      font-weight: bold;
-      border: none;
-      border-radius: 30px;
-      padding: 15px 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0px 5px 20px rgba(255, 65, 108, 0.5);
-    }
-
-    .login-btn:hover {
-      box-shadow: 0px 8px 30px rgba(255, 65, 108, 0.8);
-      transform: scale(1.05);
-    }
-
-    /* Footer note */
-    .footer {
-      margin-top: 25px;
-      font-size: 0.9em;
-      opacity: 0.8;
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>MaxSync</h1>
-    <p>Track your Movies, TV Shows & Anime with Trakt</p>
-    <button class="login-btn" onclick="loginWithTrakt()">LOGIN WITH TRAKT</button>
-    <div class="footer">
-      By logging in, you agree to Trakt’s terms
+        {/* Extra Links */}
+        <p className="text-gray-400 text-center mt-6">
+          Don’t have an account?{" "}
+          <a href="#" className="text-purple-400 hover:underline">
+            Sign up
+          </a>
+        </p>
+      </div>
     </div>
-  </div>
-<script>
-  function loginWithTrakt() {
-    // Yaha Trakt OAuth URL dalenge
-    const clientId = "58b086eb5946d45c907b4cbcd34283e154aaa0266c8de53b7c52c1e61d267e87";  
-    const redirectUri = "http://localhost:3000/callback"; // baad me Vercel URL hoga
-    const traktAuthUrl = `https://trakt.tv/oauth/authorize?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=public`;
-
-    // User ko Trakt login page par redirect karna
-    window.location.href = traktAuthUrl;
-  }
-</script>
-
-</body>
-</html>
+  );
+}
